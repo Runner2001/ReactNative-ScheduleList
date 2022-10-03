@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 
-const GoalInput = ({ userInput, userInputHandler, addGoalHandler }) => {
+const GoalInput = ({ setUserInput, userInput, userInputHandler, addGoalHandler }) => {
     return (
         <View style={styles.inputContainer}>
             <TextInput
@@ -10,12 +10,23 @@ const GoalInput = ({ userInput, userInputHandler, addGoalHandler }) => {
                 value={userInput}
                 onChangeText={userInputHandler}
             />
-            <Button
-                title='Add'
-                style={styles.Standardbutton}
-                onPress={addGoalHandler}
-                color='#323232'
-            />
+            <View style={styles.buttonContainer}>
+                <View style={styles.button}>
+                    <Button
+                        title='Clear'
+                        color='red'
+                        styles={styles.Standardbutton}
+                        onPress={() => setUserInput("")}
+                    />
+                </View>
+                <View style={styles.button}>
+                    <Button
+                        title='Add'
+                        style={styles.Standardbutton}
+                        onPress={addGoalHandler}
+                    />
+                </View>
+            </View>
         </View>
     )
 }
@@ -24,18 +35,27 @@ export default GoalInput;
 
 const styles = StyleSheet.create({
     inputContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%'
     },
     input: {
         borderColor: '#323232',
         borderWidth: 1,
         padding: 10,
-        width: '80%',
+        width: '100%',
     },
     Standardbutton: {
-        paddingHorizontal: 32,
-        paddingVertical: 10,
+        width: '50%'
     },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: 16,
+        width: '100%'
+    },
+    button: {
+        width: '48%',
+    }
 })

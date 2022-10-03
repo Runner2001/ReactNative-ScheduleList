@@ -25,7 +25,7 @@ export default function App() {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <GoalInput userInput={userInput} userInputHandler={userInputHandler} addGoalHandler={addGoalHandler} />
+        <GoalInput userInput={userInput} setUserInput={setUserInput} userInputHandler={userInputHandler} addGoalHandler={addGoalHandler} />
         <View style={styles.listData}>
           {allGoal.length !== 0 ? <Text style={{ fontSize: 18, marginBottom: 8, fontWeight: '500' }}>Your Goals</Text> : ""}
           {allGoal.map(data => <ListData key={data.id} id={data.id} ondelete={removeGoalHandler} title={data.text} />)}
